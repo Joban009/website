@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Mahamanjushree Resort</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        .contact-section * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Tinos", serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 500vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-image: url("../assets/20250722_130617.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment:static;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.25);
+            z-index: 1;
+        }
+
+        .contact-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Main Container */
+        .contact-main-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Contact Info Styling */
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(2px);
+            border: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(2px);
+            border: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Typography */
+        .contact-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-accent-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #1f618d);
+            margin: 0 auto 30px;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Info Items */
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.2);
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .contact-info-icon {
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-right: 20px;
+            width: 50px;
+            text-align: center;
+            background: rgba(52, 152, 219, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .contact-info-content h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-info-content p {
+            color: #34495e;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* Social Media */
+        .contact-social-media {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .contact-social-media h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .contact-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-social-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            text-decoration: none;
+            color: #3498db;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-social-link:hover {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .contact-social-link i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Form Styling */
+        .contact-form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .contact-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .contact-input,
+        .contact-textarea {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            color: #2c3e50;
+        }
+
+        .contact-input:focus,
+        .contact-textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .contact-textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .contact-submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9, #1f618d);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .contact-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.5);
+            background: linear-gradient(135deg, #2980b9, #1f618d, #154360);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+
+            .contact-info-card,
+            .contact-form-card {
+                padding: 30px;
+            }
+
+            .container {
+                background-size:cover;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-main-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-section {
+                padding: 30px 15px;
+            }
+
+            .contact-title {
+                font-size: 2.2rem;
+            }
+
+            .contact-info-card,
+            .contact-form-card {
+                padding: 30px;
+            }
+
+            .contact-form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .contact-info-item {
+                padding: 18px;
+            }
+
+            .contact-social-links {
+                gap: 15px;
+            }
+
+            .container {
+                background-size: cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-section {
+                padding: 20px 10px;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .contact-info-card,
+            .contact-form-card {
+                padding: 25px;
+            }
+
+            .contact-info-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .contact-info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .contact-social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container {
+                background-size: cover;
+            }
+        }
+
+        /* Utility Classes for Integration */
+        .contact-section.compact {
+            max-width: 800px;
+        }
+
+        .contact-section.wide {
+            max-width: 1400px;
+        }
+
+        .contact-section.dark-theme .contact-info-card,
+        .contact-section.dark-theme .contact-form-card {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+        }
+
+        .contact-section.dark-theme .contact-title,
+        .contact-section.dark-theme .contact-info-content h3 {
+            color: white;
+        }
+
+        .contact-section.dark-theme .contact-info-content p {
+            color: #ecf0f1;
+        }
+
+        .contact-section.dark-theme .contact-label {
+            color: white;
+        }
+
+        .contact-section.dark-theme .contact-input,
+        .contact-section.dark-theme .contact-textarea {
+            background: rgba(52, 73, 94, 0.8);
+            border-color: #34495e;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Standalone Contact Section - Can be integrated into any website -->
+        <section class="contact-section">
+            <div class="contact-main-container">
+                <!-- Contact Information Card -->
+                <div class="contact-info-card">
+                    <h1 class="contact-title">Get In Touch</h1>
+                    <div class="contact-accent-line"></div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-geo-alt contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>Address</h3>
+                            <p>Mahamanjushree Road<br>Bhaktapur, Nepal</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-envelope contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>Email</h3>
+                            <p>mahamanjushree.resort@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-telephone contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>Phone</h3>
+                            <p>+977 9861885663</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-whatsapp contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>WhatsApp</h3>
+                            <p>+977 9861885663</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-social-media">
+                        <h3>Follow Us</h3>
+                        <div class="contact-social-links">
+                            <a href="https://www.facebook.com/profile.php?id=100094024943553&mibextid=ZbWKwL"
+                                class="contact-social-link" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/mahamanjushree_resort?igsh=anR1N20zcno2emdx"
+                                class="contact-social-link" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="contact-social-link">
+                                <i class="bi bi-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="contact-form-card">
+                    <h2 class="contact-title">Contact Us</h2>
+                    <div class="contact-accent-line"></div>
+
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="contact-form-row">
+                            <div class="contact-form-group">
+                                <label for="fname" class="contact-label">First Name</label>
+                                <input type="text" id="fname" name="fname" class="contact-input" required />
+                            </div>
+                            <div class="contact-form-group">
+                                <label for="lname" class="contact-label">Last Name</label>
+                                <input type="text" id="lname" name="lname" class="contact-input" required />
+                            </div>
+                        </div>
+
+                        <div class="contact-form-row">
+                            <div class="contact-form-group">
+                                <label for="email" class="contact-label">Email</label>
+                                <input type="email" id="email" name="email" class="contact-input" required />
+                            </div>
+                            <div class="contact-form-group">
+                                <label for="phone" class="contact-label">Phone Number</label>
+                                <input id="phone" type="tel" name="phone" class="contact-input" required />
+                            </div>
+                        </div>
+
+                        <div class="contact-form-group full-width">
+                            <label for="message" class="contact-label">Message</label>
+                            <textarea id="message" name="message" rows="5" class="contact-textarea" required></textarea>
+                        </div>
+
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+    <script>
+        // Initialize phone input
+        const input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            initialCountry: "auto",
+            geoIpLookup: function (callback) {
+                fetch("https://ipapi.co/json")
+                    .then((res) => res.json())
+                    .then((data) => callback(data.country_code))
+                    .catch(() => callback("np"));
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+        });
+
+        // Integration helper functions
+        window.ContactSection = {
+            // Change theme
+            setTheme: function (theme) {
+                const section = document.querySelector('.contact-section');
+                section.className = `contact-section ${theme}`;
+            },
+
+            // Change size
+            setSize: function (size) {
+                const section = document.querySelector('.contact-section');
+                section.className = `contact-section ${size}`;
+            },
+
+            // Get form data
+            getFormData: function () {
+                const form = document.querySelector('.contact-form');
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                return data;
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rooms>
+    <room id="room1">
+        <![CDATA[
+        <div id="carousel_room1" class="carousel slide carousel-fade">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/rooms/attached-room/1.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/rooms/attached-room/2.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/rooms/attached-room/3.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+                <div class="carousel-item">
+                    <video src="../assets/rooms/videos/4.mp4" class="d-block w-100" alt="..." autoplay style="height: 800px; width: auto;" muted></video
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button"
+                data-bs-target="#carousel_room1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button"
+                data-bs-target="#carousel_room1" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        ]]>
+    </room>
+
+    <room id="room2">
+        <![CDATA[
+        <div id="carousel_room2" class="carousel slide carousel-fade">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/rooms/non attached/5.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/rooms/non attached/2.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/rooms/non attached/3.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/rooms/non attached/4.jpg" class="d-block w-100" alt="..." style="height: 800px; width: auto;">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button"
+                data-bs-target="#carousel_room2" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button"
+                data-bs-target="#carousel_room2" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        ]]>
+    </room>
+
+    <room id="room3">
+        <![CDATA[
+        <div id="carousel_room3" class="carousel slide carousel-fade">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/rooms/non attached/1.jpg" class="d-block w-100" alt="..."style="height: 500px;">
+                </div>
+                <!-- <div class="carousel-item">
+                    <img src="../assets/rooms/gumba.jpg" class="d-block w-100" alt="...">
+                </div> -->
+            </div>
+            <button class="carousel-control-prev" type="button"
+                data-bs-target="#carousel_room3" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button"
+                data-bs-target="#carousel_room3" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        ]]>
+    </room>
+</rooms>

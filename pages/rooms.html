@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <style>
+        .Room-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background-color: #f0f0f0;
+        }
+
+        #slides {
+            display: flex;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        #rooms {
+            border-right: 2px solid #ccc;
+            background-color: #fafafa;
+            padding: 10px;
+            gap: 10px;
+            width: 500px;
+        }
+
+        #rooms button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        #rooms button:hover {
+            transform: scale(1.05);
+        }
+
+        button img {
+            height: 300px;
+            width: 20px;
+        }
+
+        #rooms img {
+            width: 70%;
+            height:auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #image {
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            width:100%;
+            height:auto;
+            object-fit: content;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #roomdesc {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40%;
+            font-weight: bold;
+            display: block;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: auto;
+            width: 600px;
+            line-height: 1.5;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-left: 200px;
+        }
+
+        #name {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Room-container">
+        <div id="slides">
+            <div id="rooms">
+                <button onclick="show_rooms('room1')">
+                    <img src="../assets/rooms/attached-room/1.jpg" alt="Room 1" />
+                    <span id="name">Room With Attached Bathroom</span>
+                </button>
+                <button onclick="show_rooms('room2')">
+                    <img src="../assets/rooms/non attached/4.jpg" alt="Room 2" />
+                    <span id="name">Room Without Attached Bathroom</span>
+                </button>
+                <button onclick="show_rooms('room3')">
+                    <img src="../assets/rooms/non attached/1.jpg" alt="Room 3" />
+                    <span id="name">Room With Attached Bathroom and Double Bed</span>
+                </button>
+            </div>
+
+            <div id="image">
+                <span id="roomdesc">
+                    Here You can see the images of different types of rooms we provide. Click on the images on the left
+                    to view more details about each room.
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function show_rooms(roomId) {
+            var XHttp = new XMLHttpRequest();
+            XHttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(this.responseText, "text/xml");
+                    var rooms = xmlDoc.getElementsByTagName("room");
+                    var output = "";
+
+                    for (var i = 0; i < rooms.length; i++) {
+                        if (rooms[i].getAttribute("id") === roomId) {
+                            // Get CDATA content (HTML stored inside)
+                            output = rooms[i].textContent.trim();
+                        }
+                    }
+
+                    document.getElementById("image").innerHTML = output;
+
+                    // Initialize Bootstrap carousel again
+                    var carousels = document.querySelectorAll('.carousel');
+                    carousels.forEach(function (carousel) {
+                        new bootstrap.Carousel(carousel);
+                    });
+                }
+            };
+            XHttp.open("GET", "rooms.xml", true);
+            XHttp.send();
+        }
+    </script>
+
+
+</body>
+
+</html>

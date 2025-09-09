@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            color: #1a1a1a;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Tinos", serif;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height:10dvh
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 20px;
+        }
+
+        .pre-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #logo img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+        }
+
+        #heading {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #17202a;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: all 0.2s ease;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(15px);
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1f618d;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Book Button */
+        #book {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, #3498db, #2980b9, #1f618d);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.25);
+        }
+
+        #book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(52, 152, 219, 0.35);
+        }
+
+        #menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Carousel */
+        img,
+        video {
+            width: 100%;
+            height: 90vh;
+            object-fit: contain;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            filter: invert(1);
+        }
+
+        #intro-desc {
+            position: absolute;
+            bottom: 25px;
+            left: 25%;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            background-color: rgba(79, 79, 79, .5);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            min-width: 200px;
+        }
+
+        #intro-desc h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        #intro-desc span {
+            font-size: 2.5em;
+            color: whitesmoke;
+        }
+
+        /* Rooms Section */
+        .Room-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background-color: #f0f0f0;
+        }
+
+        #room-slides {
+            display: flex;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            height: 90dvh;
+            width: 90dvw;
+        }
+
+        #room-rooms {
+            border-right: 2px solid #ccc;
+            background-color: #fafafa;
+            padding: 10px;
+            gap: 10px;
+            width: 500px;
+        }
+
+        #room-rooms button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        #room-rooms button:hover {
+            transform: scale(1.05);
+        }
+
+        #room-rooms img {
+            width: auto;
+            height: 250px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #room-name {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+            font-size: 16px;
+        }
+
+        #room-image {
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            object-fit: content;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #room-desc {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40%;
+            font-weight: bold;
+            display: block;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: auto;
+            width: 600px;
+            line-height: 1.5;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-left: 200px;
+
+        }
+
+        /* Gallery */
+        /* Scoped Gallery Page */
+        .gallery-page {
+            height: 100%;
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Button container */
+        .gallery-page .gallery-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .gallery-page #gallery-output {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Media items */
+        .gallery-page #gallery-output img,
+        .gallery-page #gallery-output video {
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+        /* Empty state text */
+        .gallery-page #gallery-output p {
+            grid-column: 1/-1;
+            text-align: center;
+            font-size: 1.4em;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* Pagination */
+        .gallery-page #pagination {
+            margin: 20px auto;
+        }
+
+
+        /* Contact Section (from contace_us.html) */
+        .container {
+            background-image: url("../assets/rooms/others/pic (24).jpg");
+            background-size: content;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: static;
+            min-height: 90dvh;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.25);
+            z-index: 1;
+        }
+
+        .contact-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #follow-us {
+            color: #b9cbed;
+            font-size: 2rem;
+        }
+
+        .contact-main-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info-card,
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(2px);
+            border: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-accent-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #1f618d);
+            margin: 0 auto 30px;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.2);
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .contact-info-icon {
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-right: 20px;
+            width: 50px;
+            text-align: center;
+            background: rgba(52, 152, 219, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .contact-info-content h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-info-content p {
+            color: #34495e;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* Social Media */
+        .contact-social-media {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .contact-social-media h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .contact-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-social-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            text-decoration: none;
+            color: #3498db;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-social-link:hover {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .contact-social-link i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Form Styling */
+        .contact-form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .contact-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .contact-input,
+        .contact-textarea {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            color: #2c3e50;
+        }
+
+        .contact-input:focus,
+        .contact-textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .contact-textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .contact-submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9, #1f618d);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .contact-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.5);
+            background: linear-gradient(135deg, #2980b9, #1f618d, #154360);
+        }
+
+        /* Footer Base */
+        .footer {
+            background: #2c2c2c;
+            color: #f1f1f1;
+            padding: 40px 20px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+        }
+
+        /* About Section */
+        .footer .about {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .footer .about h2 {
+            font-size: 1.5em;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .footer .about p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Quick Links Section */
+        .footer .links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer .links h3 {
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .footer .links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer .links ul li {
+            margin: 8px 0;
+        }
+
+        .footer .links ul li a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        .footer .links ul li a:hover {
+            color: #00aaff;
+        }
+
+        /* Contact Section */
+        .footer .contact {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer .contact h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .footer .contact p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            color: #bbb;
+        }
+
+        .footer .contact .number {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Social Section */
+        .footer .social {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+
+        }
+
+        .footer .social h3 {
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .footer .social .contact-social-link {
+            margin: 5px 2px;
+            font-size: 0.5em;
+            color: #ccc;
+            transition: color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .footer .social .contact-social-link:hover {
+            color: #00aaff;
+            transform: translateY(-3px);
+        }
+
+        /* Divider + Copyright */
+        .footer hr {
+            border: none;
+            border-top: 1px solid #444;
+            margin: 25px 0;
+        }
+
+        .footer p.copy {
+            text-align: center;
+            font-size: 0.85em;
+            color: #999;
+            margin: 0;
+        }
+
+        .color {
+            color: #1f618d;
+            font-weight: 700;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="pre-header">
+            <div id="logo">
+                <img src="../assets/logo1.png" alt="Logo" />
+            </div>
+            <div id="heading">Mahamanjushree <br/>Resort</div>
+        </div>
+            <nav id="mainNav" class="nav-collapsed">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#room">Rooms</a>   
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
+        <div id="book">Book Now</div>
+        <div id="menu" aria-label="Open menu" aria-expanded="false">
+            <i class="bi bi-list"></i>
+        </div>
+    </div>
+
+    <div class="fullheader-container" id="home">
+        <div class="hero-section">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-ride="carousel"
+                data-bs-touch="true" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../assets/20250722_130617.png" class="d-block w-100" alt="...">
+                        <div id="intro-desc">
+                            <h1>Welcome <br> Mahamanjushree Resort</h1>
+                            <p>Your Perfect Getaway Awaits!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/home night.jpg" class="d-block w-100" alt="...">
+                        <div id="intro-desc">
+                            <span>Feel the Nature. <br>Enjoy the view.</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <video class="d-block w-100" autoplay loop muted>
+                            <source src="../assets/valley view.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div id="intro-desc">
+                            <span>Peaceful City View. <br>Enjoy day and night.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="Room-container" id="room">
+        <div id="room-slides">
+            <div id="room-rooms">
+                <button onclick="show_rooms1('room1')">
+                    <img src="../assets/rooms/attached-room/1.jpg" alt="Room 1" />
+                    <span id="room-name">Room With Attached Bathroom</span>
+                </button>
+                <button onclick="show_rooms1('room2')">
+                    <img src="../assets/rooms/non attached/4.jpg" alt="Room 2" />
+                    <span id="room-name">Room Without Attached Bathroom</span>
+                </button>
+                <button onclick="show_rooms1('room3')">
+                    <img src="../assets/rooms/non attached/1.jpg" alt="Room 3" />
+                    <span id="room-name">Room With Attached Bathroom and Double Bed</span>
+                </button>
+            </div>
+
+            <div id="room-image">
+                <span id="room-roomdesc">
+                    Here You can see the images of different types of rooms we provide. Click on the images on the left
+                    to view more details about each room.
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-page" id="gallery">
+        <div class="gallery-container mb-3">
+            <button class="btn btn-primary me-2" onclick="show_rooms2('attached-room')">Attached Room</button>
+            <button class="btn btn-primary me-2" onclick="show_rooms2('nonattached-room')">Non-Attached Room</button>
+            <button class="btn btn-primary me-2" onclick="show_rooms2('others')">Others</button>
+            <button class="btn btn-primary" onclick="show_rooms2('video')">Videos</button>
+        </div>
+
+        <div id="gallery-output" class="mt-3">
+            <p>Select a category to view images or videos.</p>
+        </div>
+
+        <div id="pagination" class="d-flex justify-content-center mt-3"></div>
+    </div>
+
+    <div class="container" id="contact">
+        <section class="contact-section">
+            <div class="contact-main-container">
+                <!-- Contact Information Card -->
+                <div class="contact-info-card">
+                    <h1 class="contact-title">Get In Touch</h1>
+                    <div class="contact-accent-line"></div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-geo-alt contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>Address</h3>
+                            <p>Mahamanjushree Road<br>Bhaktapur, Nepal</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-envelope contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>Email</h3>
+                            <p>mahamanjushree.resort@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-telephone contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>Phone</h3>
+                            <p>+977 9861885663</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="bi bi-whatsapp contact-info-icon"></i>
+                        <div class="contact-info-content">
+                            <h3>WhatsApp</h3>
+                            <p>+977 9861885663</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-social-media">
+                        <h3 id="follow-us">Follow Us</h3>
+                        <div class="contact-social-links">
+                            <a href="https://www.facebook.com/profile.php?id=100094024943553&mibextid=ZbWKwL"
+                                class="contact-social-link" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/mahamanjushree_resort?igsh=anR1N20zcno2emdx"
+                                class="contact-social-link" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="contact-social-link">
+                                <i class="bi bi-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="contact-form-card">
+                    <h2 class="contact-title">Contact Us</h2>
+                    <div class="contact-accent-line"></div>
+
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="contact-form-row">
+                            <div class="contact-form-group">
+                                <label for="fname" class="contact-label">First Name</label>
+                                <input type="text" id="fname" name="fname" class="contact-input" required />
+                            </div>
+                            <div class="contact-form-group">
+                                <label for="lname" class="contact-label">Last Name</label>
+                                <input type="text" id="lname" name="lname" class="contact-input" required />
+                            </div>
+                        </div>
+
+                        <div class="contact-form-row">
+                            <div class="contact-form-group">
+                                <label for="email" class="contact-label">Email</label>
+                                <input type="email" id="email" name="email" class="contact-input" required />
+                            </div>
+                            <div class="contact-form-group">
+                                <label for="phone" class="contact-label">Phone Number</label>
+                                <input id="phone" type="tel" name="phone" class="contact-input" required />
+                            </div>
+                        </div>
+
+                        <div class="contact-form-group full-width">
+                            <label for="message" class="contact-label">Message</label>
+                            <textarea id="message" name="message" rows="5" class="contact-textarea" required></textarea>
+                        </div>
+
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer" id="about">
+        <div class="footer-container">
+            <!-- About Us -->
+            <div class="about">
+                <h2>About Us</h2>
+                <p>
+                    Mahamanjushree Resort is a serene getaway nestled in the heart of nature, offering a perfect blend
+                    of
+                    comfort
+                    and tranquility. With modern amenities, breathtaking views, and exceptional hospitality, we ensure
+                    an
+                    unforgettable experience for every guest.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#room">Rooms</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p><i class="bi bi-telephone color"></i> Phone Support</p>
+                <p>24/7 available</p>
+                <p class="number">+977 9861885663</p>
+                <p><i class="bi bi-envelope color"></i> mahamanjushree.resort@gmail.com</p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social">
+                <h3>Follow Us</h3>
+                <a href="https://wa.me/9861885663" target="_blank" class="contact-social-link"><i
+                        class="bi bi-whatsapp"></i></a>
+                <a href="https://maps.app.goo.gl/CrF9DMqPMUfWtuJ27" target="_blank" class="contact-social-link"><i
+                        class="bi bi-geo-alt"></i></a>
+                <a href="tel:+9779861885663" target="_blank" class="contact-social-link"><i
+                        class="bi bi-telephone"></i></a>
+                <a href="mailto:mahamanjushree.resort@gmail.com" target="_blank" class="contact-social-link"><i
+                        class="bi bi-envelope"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100094024943553&mibextid=ZbWKwL" target="_blank"
+                    class="contact-social-link"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/mahamanjushree_resort?igsh=anR1N20zcno2emdx" target="_blank"
+                    class="contact-social-link"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.tiktok.com/@mahamanjushree_resort?_t=ZS-8zWxawbCxfA&_r=1" target="_blank"
+                    class="contact-social-link"><i class="bi bi-tiktok"></i></a>
+            </div>
+        </div>
+
+        <hr>
+        <p class="copy">&copy; 2082 Mahamanjushree Resort - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        (function () {
+            const menuToggle = document.getElementById("menu");
+            const nav = document.getElementById("mainNav");
+
+            function setExpanded(expanded) {
+                menuToggle.setAttribute("aria-expanded", String(expanded));
+                if (expanded) {
+                    nav.classList.remove("nav-collapsed", "closing");
+                    nav.classList.add("nav-expanded");
+                    document.body.classList.add("menu-open");
+                } else {
+                    // add closing animation
+                    nav.classList.add("closing");
+                    document.body.classList.remove("menu-open");
+
+                    // wait for animation, then collapse
+                    nav.addEventListener(
+                        "transitionend",
+                        function handler() {
+                            nav.classList.remove("nav-expanded", "closing");
+                            nav.classList.add("nav-collapsed");
+                            nav.removeEventListener("transitionend", handler);
+                        }
+                    );
+                }
+            }
+
+
+            function isMobile() {
+                return window.matchMedia("(max-width: 768px)").matches;
+            }
+
+            function collapseOnDesktop() {
+                if (!isMobile()) {
+                    // On desktop: nav always visible
+                    nav.classList.remove("nav-collapsed", "nav-expanded");
+                    document.body.classList.remove("menu-open");
+                } else {
+                    // On tablet/mobile: start collapsed
+                    setExpanded(false);
+                }
+            }
+
+
+            menuToggle.addEventListener("click", function () {
+                if (!isMobile()) return;
+                const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+                setExpanded(!expanded);
+            });
+
+            window.addEventListener("resize", collapseOnDesktop);
+            window.addEventListener("orientationchange", collapseOnDesktop);
+            collapseOnDesktop();
+        })();
+
+
+        function show_rooms1(roomId) {
+            var XHttp = new XMLHttpRequest();
+            XHttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(this.responseText, "text/xml");
+                    var rooms = xmlDoc.getElementsByTagName("room");
+                    var output = "";
+
+                    for (var i = 0; i < rooms.length; i++) {
+                        if (rooms[i].getAttribute("id") === roomId) {
+                            // Get CDATA content (HTML stored inside)
+                            output = rooms[i].textContent.trim();
+                        }
+                    }
+
+                    document.getElementById("room-image").innerHTML = output;
+
+                    // Initialize Bootstrap carousel again
+                    var carousels = document.querySelectorAll('.carousel');
+                    carousels.forEach(function (carousel) {
+                        new bootstrap.Carousel(carousel);
+                    });
+                }
+            };
+            XHttp.open("GET", "rooms.xml", true);
+            XHttp.send();
+        }
+
+        let currentPage = 1;
+        let itemsPerPage = 10;
+        let currentFiles = [];
+        let activeCategory = "";
+
+        function show_rooms2(galleryId) {
+            var XHttp = new XMLHttpRequest();
+            XHttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var parser = new DOMParser();
+                    var xmlDoc = parser.parseFromString(this.responseText, "text/xml");
+                    var rooms = xmlDoc.getElementsByTagName("file");
+
+                    currentFiles = [];
+                    activeCategory = galleryId;
+
+                    for (var i = 0; i < rooms.length; i++) {
+                        if (rooms[i].getAttribute("id") === galleryId) {
+                            currentFiles.push(rooms[i].textContent.trim());
+                        }
+                    }
+
+                    // Sort numerically (so 1.jpg < 10.jpg < 11.jpg)
+                    currentFiles.sort((a, b) =>
+                        a.localeCompare(b, undefined, { numeric: true })
+                    );
+
+                    currentPage = 1;
+                    renderPage();
+                }
+            };
+            XHttp.open("GET", "gallery.xml", true);
+            XHttp.send();
+        }
+
+        function renderPage() {
+            let start = (currentPage - 1) * itemsPerPage;
+            let end = start + itemsPerPage;
+            let paginatedItems = currentFiles.slice(start, end);
+
+            let output = "";
+            paginatedItems.forEach(file => {
+                if (activeCategory === "video") {
+                    output += `
+                        <video controls autoplay muted loop>
+                            <source src="../assets/rooms/${file}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>`;
+                } else {
+                    output += `<img src="../assets/rooms/${file}" alt="${activeCategory}">`;
+                }
+            });
+
+            document.getElementById("gallery-output").innerHTML =
+                output || "<p>No items found.</p>";
+
+            // Render pagination buttons
+            let totalPages = Math.ceil(currentFiles.length / itemsPerPage);
+            if (totalPages > 1) {
+                let paginationHtml = `
+                    <button class="btn btn-secondary me-2" onclick="changePage(-1)" ${currentPage === 1 ? "disabled" : ""}>Prev</button>
+                    <span class="align-self-center"> Page ${currentPage} of ${totalPages} </span>
+                    <button class="btn btn-secondary ms-2" onclick="changePage(1)" ${currentPage === totalPages ? "disabled" : ""}>Next</button>
+                `;
+                document.getElementById("pagination").innerHTML = paginationHtml;
+            } else {
+                document.getElementById("pagination").innerHTML = "";
+            }
+        }
+
+        function changePage(direction) {
+            let totalPages = Math.ceil(currentFiles.length / itemsPerPage);
+            currentPage += direction;
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            renderPage();
+        }
+
+        // Initialize phone input
+        const input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            initialCountry: "auto",
+            geoIpLookup: function (callback) {
+                fetch("https://ipapi.co/json")
+                    .then((res) => res.json())
+                    .then((data) => callback(data.country_code))
+                    .catch(() => callback("np"));
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+        });
+
+        // Integration helper functions
+        window.ContactSection = {
+            // Change theme
+            setTheme: function (theme) {
+                const section = document.querySelector('.contact-section');
+                section.className = `contact-section ${theme}`;
+            },
+
+            // Change size
+            setSize: function (size) {
+                const section = document.querySelector('.contact-section');
+                section.className = `contact-section ${size}`;
+            },
+
+            // Get form data
+            getFormData: function () {
+                const form = document.querySelector('.contact-form');
+                const formData = new FormData(form);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                return data;
+            }
+        };
+
+    </script>
+</body>
+
+</html>

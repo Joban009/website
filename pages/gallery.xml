@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gallery>
+    <image >
+        <file id="attached-room">attached-room/1.jpg</file>
+        <file id="attached-room">attached-room/2.jpg</file>
+        <file id="attached-room">attached-room/3.jpg</file>
+        <file id="attached-room">attached-room/4.jpg</file>
+    </image>
+    <image >
+        <file id="nonattached-room">non attached/1.jpg</file>
+        <file id="nonattached-room">non attached/2.jpg</file>
+        <file id="nonattached-room">non attached/3.jpg</file>
+        <file id="nonattached-room">non attached/4.jpg</file>
+        <file id="nonattached-room">non attached/5.jpg</file>
+    </image>
+    <image>
+        <file id="others">others/pic (1).jpg</file>
+        <file id="others">others/pic (2).jpg</file>
+        <file id="others">others/pic (3).jpg</file>
+        <file id="others">others/pic (4).jpg</file>
+        <file id="others">others/pic (5).jpg</file>
+        <file id="others">others/pic (6).jpg</file>
+        <file id="others">others/pic (7).jpg</file>
+        <file id="others">others/pic (8).jpg</file>
+        <file id="others">others/pic (9).jpg</file>
+        <file id="others">others/pic (10).jpg</file>
+        <file id="others">others/pic (11).jpg</file>
+        <file id="others">others/pic (12).jpg</file>
+        <file id="others">others/pic (13).jpg</file>
+        <file id="others">others/pic (14).jpg</file>
+        <file id="others">others/pic (15).jpg</file>
+        <file id="others">others/pic (16).jpg</file>
+        <file id="others">others/pic (17).jpg</file>
+        <file id="others">others/pic (18).jpg</file>
+        <file id="others">others/pic (19).jpg</file>
+        <file id="others">others/pic (20).jpg</file>
+        <file id="others">others/pic (21).jpg</file>
+        <file id="others">others/pic (22).jpg</file>
+        <file id="others">others/pic (23).jpg</file>
+        <file id="others">others/pic (24).jpg</file>
+        <file id="others">others/pic (25).jpg</file>
+        <file id="others">others/pic (26).jpg</file>
+        <file id="others">others/pic (27).jpg</file>
+        <file id="others">others/pic (28).jpg</file>
+        <file id="others">others/pic (29).jpg</file>
+        <file id="others">others/pic (30).jpg</file>
+        <file id="others">others/pic (31).jpg</file>
+        <file id="others">others/pic (32).jpg</file>
+        <file id="others">others/pic (33).jpg</file>
+    </image>
+    <image>
+        <file id="video">videos/1.mp4</file>
+        <file id="video">videos/2.mp4</file>
+        <file id="video">videos/3.mp4</file>
+        <file id="video">videos/4.mp4</file>
+    </image>
+</gallery>
